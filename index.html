@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050a0d">
+    <title>Rigolets Bait & Seafood | Slidell, LA - Live Bait, Diesel, Ice Cream & Dock Access</title>
+    
+    <!-- Meta SEO & Open Graph -->
+    <meta name="description" content="Rigolets Bait & Seafood in Slidell, LA. Offering live bait, live shrimp, diesel, fresh coffee, Blue Bell ice cream, and deep water entrance access for anglers and boaters.">
+    <meta name="keywords" content="Rigolets Bait Seafood, Slidell LA bait shop, live shrimp Slidell, diesel fuel boat dock, Lake Pontchartrain bait shop, US-90 Slidell fishing">
+    <meta property="og:title" content="Rigolets Bait & Seafood - Slidell, LA">
+    <meta property="og:description" content="Your trusted coastal stop on US-90 for live shrimp, diesel, ice cream, hot coffee, and deep water dock entrance.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:type" content="website">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0f2027',
+                            900: '#0a151b',
+                            950: '#050a0d',
+                        },
+                        copper: {
+                            400: '#f39c12',
+                            500: '#d35400',
+                            600: '#b7410e',
+                        },
+                        cypress: {
+                            800: '#1e3023',
+                            900: '#121f16',
+                        },
+                        coastal: '#2a6f97'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Georgia', 'Cambria', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Inter Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Custom Styles & Animation Logic */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050a0d;
+            color: #f1f5f9;
+            overflow-x: hidden;
+        }
+
+        /* Parallax Layer Styles */
+        .parallax-wrapper {
+            position: relative;
+            /* Let the hero grow with its content so the wave divider never covers the info cards. */
+            height: auto;
+            min-height: 100vh;
+            min-height: 100svh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 5rem;
+        }
+
+        .parallax-bg {
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            object-fit: cover;
+            z-index: 1;
+            will-change: transform;
+            transition: transform 0.1s cubic-bezier(0,0,0.2,1);
+        }
+
+        .parallax-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(5,10,13,0.4) 0%, rgba(5,10,13,0.7) 60%, rgba(5,10,13,1) 100%);
+            z-index: 2;
+        }
+
+        .parallax-content {
+            position: relative;
+            z-index: 3;
+            will-change: transform;
+        }
+
+        /* Subtle Ambient Glow */
+        .glow-effect {
+            box-shadow: 0 0 35px -5px rgba(211, 84, 0, 0.3);
+        }
+
+        /* Glassmorphic Cards */
+        .glass-card {
+            background: rgba(15, 32, 39, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(212, 143, 56, 0.3);
+        }
+
+        /* Custom Wave Pattern */
+        .wave-svg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            z-index: 4;
+        }
+
+        .wave-svg svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 60px;
+        }
+
+        /* Ambient Video Simulation styling */
+        .hero-poster-fallback {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+        }
+
+        video.hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.7) contrast(1.1);
+        }
+
+        a:focus-visible, button:focus-visible {
+            outline: 2px solid #f39c12;
+            outline-offset: 3px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .parallax-wrapper { min-height: 100svh; height: auto; }
+            .parallax-content { padding-top: 7rem; padding-bottom: 5rem; }
+            video.hero-video { display: none; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .parallax-bg, .parallax-content {
+                transform: none !important;
+            }
+            video.hero-video {
+                display: none;
+            }
+            .hero-poster-fallback {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-copper-500 selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-navy-950/80 backdrop-blur-md border-b border-white/10" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand / Logo -->
+                <a href="#" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-copper-500 to-copper-600 flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-anchor text-lg"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-lg font-bold tracking-wider text-white uppercase font-serif">Rigolets</span>
+                        <span class="text-xs text-copper-400 font-medium tracking-widest -mt-1">BAIT & SEAFOOD</span>
+                    </div>
+                </a>
+
+                <!-- Nav Links -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                    <a href="#about" class="hover:text-copper-400 transition-colors">About</a>
+                    <a href="#offerings" class="hover:text-copper-400 transition-colors">Services & Fuel</a>
+                    <a href="#reviews" class="hover:text-copper-400 transition-colors">Reviews</a>
+                    <a href="#location" class="hover:text-copper-400 transition-colors">Hours & Directions</a>
+                </nav>
+
+                <!-- Header Actions -->
+                <div class="flex items-center gap-3">
+                    <a href="tel:+19856418088" class="flex items-center gap-2 bg-copper-600 hover:bg-copper-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-copper-400 text-white px-4 py-2.5 rounded-lg font-semibold text-sm transition-all shadow-md hover:shadow-copper-600/30">
+                        <i class="fa-solid fa-phone text-xs" aria-hidden="true"></i>
+                        <span class="hidden sm:inline">(985) 641-8088</span>
+                        <span class="sm:hidden">Call</span>
+                    </a>
+                    <button id="mobile-menu-toggle" type="button" class="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-lg border border-white/15 text-white hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-copper-400" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open navigation menu">
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <nav id="mobile-menu" class="hidden md:hidden border-t border-white/10 py-3" aria-label="Mobile navigation">
+                <a href="#about" class="block rounded-lg px-3 py-3 text-slate-200 hover:bg-white/10">About</a>
+                <a href="#offerings" class="block rounded-lg px-3 py-3 text-slate-200 hover:bg-white/10">Services & Fuel</a>
+                <a href="#reviews" class="block rounded-lg px-3 py-3 text-slate-200 hover:bg-white/10">Reviews</a>
+                <a href="#location" class="block rounded-lg px-3 py-3 text-slate-200 hover:bg-white/10">Hours & Directions</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION with Parallax and Looping Atmospheric Visual -->
+    <section class="parallax-wrapper relative text-center min-h-screen pt-20">
+        <!-- Canvas/Video Ambient Background -->
+        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80" alt="Coastal waterway near Slidell, Louisiana" class="hero-poster-fallback absolute inset-0 w-full h-full object-cover" fetchpriority="high">
+        <video class="hero-video" autoplay loop muted playsinline preload="metadata" poster="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1920&q=80" aria-hidden="true">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-sea-water-waves-loop-41549-large.mp4" type="video/mp4">
+        </video>
+
+        <!-- Dynamic Dark Gradient Overlay for Contrast -->
+        <div class="parallax-overlay"></div>
+
+        <!-- Hero Content Layer -->
+        <div class="parallax-content max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 flex flex-col items-center">
+            
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-copper-500/20 border border-copper-500/40 text-copper-300 text-xs sm:text-sm font-semibold tracking-wide uppercase mb-6 backdrop-blur-md">
+                <i class="fa-solid fa-location-dot text-copper-400"></i> Slidell, LA &bull; Highway 90
+            </div>
+
+            <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold text-white font-serif tracking-tight leading-tight mb-6">
+                Rigolets Bait & Seafood
+            </h1>
+
+            <p class="text-lg sm:text-xl text-slate-300 max-w-2xl mb-8 leading-relaxed font-light">
+                Your primary coastal outpost on Lake Pontchartrain. Offering live shrimp, quality live bait, diesel fuel, hot coffee, and deep water dock entrance right off US-90.
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                <a href="https://www.google.com/maps/search/?api=1&query=52250+US-90,+Slidell,+LA+70461" target="_blank" rel="noopener" class="flex items-center justify-center gap-3 bg-gradient-to-r from-copper-500 to-copper-600 hover:from-copper-600 hover:to-copper-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-base glow-effect">
+                    <i class="fa-solid fa-compass text-lg"></i> Get Directions
+                </a>
+                <a href="tel:+19856418088" class="flex items-center justify-center gap-3 bg-navy-800/80 hover:bg-navy-800 text-white font-semibold px-8 py-4 rounded-xl border border-white/20 backdrop-blur-md transition-all transform hover:-translate-y-0.5 text-base">
+                    <i class="fa-solid fa-phone text-copper-400"></i> Call (985) 641-8088
+                </a>
+            </div>
+
+            <!-- Quick Info Bar -->
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 w-full max-w-4xl text-left">
+                <div class="glass-card p-4 rounded-xl flex items-center gap-3">
+                    <div class="text-copper-400 text-xl"><i class="fa-solid fa-clock"></i></div>
+                    <div>
+                        <div class="text-xs text-slate-400">Daily Hours</div>
+                        <div class="text-sm font-semibold text-white">Call to confirm today's hours</div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-3">
+                    <div class="text-copper-400 text-xl"><i class="fa-solid fa-fish"></i></div>
+                    <div>
+                        <div class="text-xs text-slate-400">Bait Status</div>
+                        <div class="text-sm font-semibold text-white">Live Shrimp & Bait</div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-3">
+                    <div class="text-copper-400 text-xl"><i class="fa-solid fa-gas-pump"></i></div>
+                    <div>
+                        <div class="text-xs text-slate-400">Dock Fuel</div>
+                        <div class="text-sm font-semibold text-white">Diesel On-site</div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 rounded-xl flex items-center gap-3">
+                    <div class="text-copper-400 text-xl"><i class="fa-solid fa-water"></i></div>
+                    <div>
+                        <div class="text-xs text-slate-400">Boat Access</div>
+                        <div class="text-sm font-semibold text-white">Deep Water Entrance</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wave Divider Bottom -->
+        <div class="wave-svg">
+            <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,121.6,200,115.8,241.1,112.35,281.82,88.19,321.39,56.44Z" fill="#050a0d"></path>
+            </svg>
+        </div>
+    </section>
+
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-20 relative bg-navy-950">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Text Column -->
+                <div>
+                    <span class="text-copper-400 font-semibold tracking-wider uppercase text-sm">Coastal Slidell, LA</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white font-serif mt-2 mb-6">
+                        Serving Anglers, Boaters & Travelers on US-90
+                    </h2>
+                    <p class="text-slate-300 leading-relaxed mb-6">
+                        Located conveniently at <strong>52250 US-90 in Slidell, LA</strong>, Rigolets Bait & Seafood provides essential marine supplies, live bait, diesel, and refreshed options right along the water's edge.
+                    </p>
+                    <p class="text-slate-300 leading-relaxed mb-8">
+                        Whether you're gearing up for an early morning fishing run in the Rigolets pass, refueling your boat via deep water dock access, or stopping by for hot coffee and Blue Bell ice cream, our doors are open daily to support your journey.
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-4 border-t border-slate-800 pt-6">
+                        <div>
+                            <div class="text-copper-400 font-bold text-2xl">4.6 ★</div>
+                            <div class="text-xs text-slate-400 mt-1">Google Customer Rating</div>
+                        </div>
+                        <div>
+                            <div class="text-copper-400 font-bold text-2xl">Slidell, LA</div>
+                            <div class="text-xs text-slate-400 mt-1">Prime Water Access Location</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature Visual Frame -->
+                <div class="relative">
+                    <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-copper-500 to-coastal opacity-30 blur-lg"></div>
+                    <div class="relative rounded-2xl overflow-hidden border border-white/10 glass-card">
+                        <img src="https://images.unsplash.com/photo-1520255870062-bd79d3865de7?auto=format&fit=crop&w=800&q=80" alt="Waterfront dock and coastal scenery" class="w-full h-80 object-cover" loading="lazy">
+                        <div class="p-6 bg-navy-900/90">
+                            <h3 class="text-xl font-bold text-white font-serif mb-2">Deep Water Dock Entrance</h3>
+                            <p class="text-slate-400 text-sm">
+                                Convenient water accessibility directly at the entrance, ensuring simple access for vessels navigating the passage.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- SERVICES & OFFERINGS SECTION -->
+    <section id="offerings" class="py-20 bg-navy-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-copper-400 font-semibold tracking-wider uppercase text-sm">What We Offer</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white font-serif mt-2 mb-4">
+                    Bait, Fuel & Convenience
+                </h2>
+                <p class="text-slate-400">
+                    Everything you need before hitting the open water or continuing down Highway 90.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Offering Card 1 -->
+                <div class="glass-card rounded-2xl p-8 hover:translate-y-1 transition-all">
+                    <div class="w-14 h-14 rounded-xl bg-copper-500/10 border border-copper-500/30 flex items-center justify-center text-copper-400 text-2xl mb-6">
+                        <i class="fa-solid fa-shrimp"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Live Shrimp & Bait</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Generally available quality live shrimp and marine fishing bait to keep your hooks baited for redfish, trout, and local saltwater species.
+                    </p>
+                </div>
+
+                <!-- Offering Card 2 -->
+                <div class="glass-card rounded-2xl p-8 hover:translate-y-1 transition-all">
+                    <div class="w-14 h-14 rounded-xl bg-copper-500/10 border border-copper-500/30 flex items-center justify-center text-copper-400 text-2xl mb-6">
+                        <i class="fa-solid fa-gas-pump"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Diesel Fuel</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        On-site diesel fuel available for motorized watercraft and vehicles traveling along the US-90 corridor.
+                    </p>
+                </div>
+
+                <!-- Offering Card 3 -->
+                <div class="glass-card rounded-2xl p-8 hover:translate-y-1 transition-all">
+                    <div class="w-14 h-14 rounded-xl bg-copper-500/10 border border-copper-500/30 flex items-center justify-center text-copper-400 text-2xl mb-6">
+                        <i class="fa-solid fa-water"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Deep Water Entrance</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Deep water boat access right at the store entrance, making vessel pull-ups and quick dock landings simple.
+                    </p>
+                </div>
+
+                <!-- Offering Card 4 -->
+                <div class="glass-card rounded-2xl p-8 hover:translate-y-1 transition-all">
+                    <div class="w-14 h-14 rounded-xl bg-copper-500/10 border border-copper-500/30 flex items-center justify-center text-copper-400 text-2xl mb-6">
+                        <i class="fa-solid fa-ice-cream"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Blue Bell Ice Cream</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Cool off after a day in the Louisiana sun with classic, fresh Blue Bell ice cream in the shop.
+                    </p>
+                </div>
+
+                <!-- Offering Card 5 -->
+                <div class="glass-card rounded-2xl p-8 hover:translate-y-1 transition-all">
+                    <div class="w-14 h-14 rounded-xl bg-copper-500/10 border border-copper-500/30 flex items-center justify-center text-copper-400 text-2xl mb-6">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Hot Fresh Coffee</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Early morning coffee brewed fresh for anglers launching at first light and early highway travelers.
+                    </p>
+                </div>
+
+                <!-- Offering Card 6 -->
+                <div class="glass-card rounded-2xl p-8 hover:translate-y-1 transition-all">
+                    <div class="w-14 h-14 rounded-xl bg-copper-500/10 border border-copper-500/30 flex items-center justify-center text-copper-400 text-2xl mb-6">
+                        <i class="fa-solid fa-handshake"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Friendly Service</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed">
+                        Helpful local staff ready to assist you with bait, supplies, fuel, and general waterway dock support.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- VERBATIM REVIEWS SECTION -->
+    <section id="reviews" class="py-20 bg-navy-950 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-copper-400 font-semibold tracking-wider uppercase text-sm">Customer Feedback</span>
+                <h2 class="text-3xl sm:text-4xl font-bold text-white font-serif mt-2 mb-4">
+                    What Our Visitors Say
+                </h2>
+                <div class="flex items-center justify-center gap-2 text-amber-400 text-lg">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i>
+                    <span class="text-slate-300 text-sm font-semibold ml-2">4.6 / 5 rating from verified web reviews</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review Card 1 -->
+                <div class="glass-card rounded-2xl p-8 flex flex-col justify-between border-t-2 border-t-copper-500">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-200 italic mb-6 leading-relaxed">
+                            "Great place friendly service live bait & coffee too!"
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-slate-400 pt-4 border-t border-white/5">
+                        <span class="font-semibold text-slate-300">Verified Customer</span>
+                        <span class="flex items-center gap-1"><i class="fa-brands fa-google text-slate-400"></i> Google Review</span>
+                    </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="glass-card rounded-2xl p-8 flex flex-col justify-between border-t-2 border-t-copper-500">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-200 italic mb-6 leading-relaxed">
+                            "Diesel, live shrimp, Bluebell ice cream and deep water at the entrance."
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-slate-400 pt-4 border-t border-white/5">
+                        <span class="font-semibold text-slate-300">Verified Boater</span>
+                        <span class="flex items-center gap-1"><i class="fa-brands fa-google text-slate-400"></i> Google Review</span>
+                    </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="glass-card rounded-2xl p-8 flex flex-col justify-between border-t-2 border-t-copper-500">
+                    <div>
+                        <div class="flex items-center gap-1 text-amber-400 text-sm mb-4">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-slate-200 italic mb-6 leading-relaxed">
+                            "The staff is always helpful, bait is generally available and of decent quality."
+                        </p>
+                    </div>
+                    <div class="flex items-center justify-between text-xs text-slate-400 pt-4 border-t border-white/5">
+                        <span class="font-semibold text-slate-300">Local Angler</span>
+                        <span class="flex items-center gap-1"><i class="fa-brands fa-facebook text-slate-400"></i> Facebook Review</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- HOURS, LOCATION & MAP SECTION -->
+    <section id="location" class="py-20 bg-navy-900 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Info Column -->
+                <div class="lg:col-span-5 flex flex-col justify-center">
+                    <span class="text-copper-400 font-semibold tracking-wider uppercase text-sm">Visit Us</span>
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white font-serif mt-2 mb-6">
+                        Location & Store Hours
+                    </h2>
+
+                    <div class="space-y-6">
+                        <!-- Address Box -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-navy-950/60 border border-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-copper-500/10 flex items-center justify-center text-copper-400 shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Store Address</h4>
+                                <p class="text-slate-300 text-sm">52250 US-90<br>Slidell, LA 70461, United States</p>
+                                <a href="https://www.google.com/maps/search/?api=1&query=52250+US-90,+Slidell,+LA+70461" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs text-copper-400 font-semibold mt-2 hover:underline">
+                                    Open Google Maps Directions <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Phone Box -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-navy-950/60 border border-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-copper-500/10 flex items-center justify-center text-copper-400 shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-semibold mb-1">Phone Number</h4>
+                                <p class="text-slate-300 text-sm">+1 985-641-8088</p>
+                                <a href="tel:+19856418088" class="inline-flex items-center gap-2 text-xs text-copper-400 font-semibold mt-2 hover:underline">
+                                    Tap to Call Now <i class="fa-solid fa-phone-flip"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Hours Box -->
+                        <div class="flex items-start gap-4 p-4 rounded-xl bg-navy-950/60 border border-white/5">
+                            <div class="w-10 h-10 rounded-lg bg-copper-500/10 flex items-center justify-center text-copper-400 shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div class="w-full">
+                                <h4 class="text-white font-semibold mb-1">Daily Operating Hours</h4>
+                                <div class="flex justify-between items-center text-sm text-slate-300 py-1">
+                                    <span>Monday – Sunday</span>
+                                    <span class="text-copper-400 font-semibold">Call to confirm</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-1">Typical visit duration: ~15 minutes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embed Frame -->
+                <div class="lg:col-span-7">
+                    <div class="w-full h-full min-h-[400px] rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative">
+                        <iframe 
+                            title="Rigolets Bait & Seafood Google Map"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0; filter: contrast(1.05) opacity(0.9);" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3445.875!2d-89.7383!3d30.1652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x889de3b14510b1a9%3A0x6b10fa728c71b!2s52250%20US-90%2C%20Slidell%2C%20LA%2070461!5e0!3m2!1sen!2sus!4v1680000000000">
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-950 text-slate-400 py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                
+                <!-- Brand Info -->
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-copper-500 flex items-center justify-center text-white font-bold text-sm">
+                        <i class="fa-solid fa-anchor"></i>
+                    </div>
+                    <div>
+                        <span class="text-white font-serif font-bold tracking-wide">Rigolets Bait & Seafood</span>
+                        <p class="text-xs text-slate-500">52250 US-90, Slidell, LA 70461</p>
+                    </div>
+                </div>
+
+                <!-- Quick Action Buttons -->
+                <div class="flex flex-wrap items-center gap-4">
+                    <a href="tel:+19856418088" class="text-xs bg-navy-800 hover:bg-navy-700 text-slate-200 px-4 py-2 rounded-lg border border-white/10 transition-colors">
+                        <i class="fa-solid fa-phone text-copper-400 mr-1.5"></i> (985) 641-8088
+                    </a>
+                    <a href="https://www.google.com/maps/search/?api=1&query=52250+US-90,+Slidell,+LA+70461" target="_blank" rel="noopener" class="text-xs bg-navy-800 hover:bg-navy-700 text-slate-200 px-4 py-2 rounded-lg border border-white/10 transition-colors">
+                        <i class="fa-solid fa-map-location-dot text-copper-400 mr-1.5"></i> Get Directions
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-white/5 text-center text-xs text-slate-600">
+                <p>&copy; <span id="year" class="font-mono"></span> Rigolets Bait & Seafood. All rights reserved. Slidell, Louisiana.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Small progressive-enhancement script -->
+    <script>
+        (() => {
+            const yearEl = document.getElementById('year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+            const navbar = document.getElementById('navbar');
+            const menuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('mobile-menu-icon');
+
+            const updateNavbar = () => {
+                if (!navbar) return;
+                navbar.classList.toggle('shadow-xl', window.scrollY > 50);
+                navbar.classList.toggle('bg-navy-950/95', window.scrollY > 50);
+            };
+            updateNavbar();
+            window.addEventListener('scroll', updateNavbar, { passive: true });
+
+            if (menuToggle && mobileMenu) {
+                menuToggle.addEventListener('click', () => {
+                    const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+                    menuToggle.setAttribute('aria-expanded', String(!isExpanded));
+                    menuToggle.setAttribute('aria-label', isExpanded ? 'Open navigation menu' : 'Close navigation menu');
+                    mobileMenu.classList.toggle('hidden', isExpanded);
+                    if (menuIcon) {
+                        menuIcon.classList.toggle('fa-bars', isExpanded);
+                        menuIcon.classList.toggle('fa-xmark', !isExpanded);
+                    }
+                });
+                mobileMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        menuToggle.setAttribute('aria-expanded', 'false');
+                        menuToggle.setAttribute('aria-label', 'Open navigation menu');
+                        if (menuIcon) {
+                            menuIcon.classList.add('fa-bars');
+                            menuIcon.classList.remove('fa-xmark');
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
+</body>
+</html>
